@@ -4,21 +4,21 @@ VirtualBox Vagrant Chef Drupal install
 
 # How
 1. Download and Install [VirtualBox](http://www.virtualbox.org/) (ensure you are on the latest version 4.0.8+)
-2. Install [vagrant](http://vagrantup.com/v1/docs/getting-started/index.html)
-3. Download or Clone this project go to the folder and launch the box:
-    `cd [vagrant project directory];
-    vagrant up`
-4. Add this line to your /etc/hosts (or windows equivalent):
+1. Install [vagrant](http://vagrantup.com/v1/docs/getting-started/index.html)
+1. Clone this project into a new directory.
+1. Create a subdirectory (or symlink to a directory) called "docroot" that includes the Drupal installation.
+1. Launch the Vagrant box:
+    `vagrant up`
+1. Add this line to your /etc/hosts (or windows equivalent):
     `10.0.0.10        dev-site.local`
-5. Alternately, use homebrew on your macbook air to install dnsmasq, and add the following line to your dnsmasq.conf file:
-    `address=/.vm/10.0.0.10`
-6. Drink a big kombucha while you listen to a Diamond Rings EP on vinyl, because clearly you're a giant hipster.
 
-
-That's it, files in "public" are served here : [http://dev-site.local/](http://dev-site.local/), and if you have a new MySQL database and drop a copy of Drupal into the public directory, you'll be ready to go.
+That's it, files in "docroot" are served here: [http://dev-site.local/](http://dev-site.local/)
 
 To connect to the console of you instance:
     `vagrant ssh` 
+
+The MySQL root username/password is: root/root
+
 
 # Why
 This project is based on the [Vagrant Project](http://drupal.org/project/vagrant) on Drupal.org, but includes a number of tweaks.
