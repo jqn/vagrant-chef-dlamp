@@ -1,5 +1,5 @@
 # What
-VirtualBox Vagrant Chef Drupal install
+VirtualBox Vagrant Chef BDD install
 
 
 # How
@@ -34,8 +34,19 @@ You can add `XDEBUG_PROFILE` to your GET parameter to generate an xdebug profile
 You can then investigate at [http://dev-site.local/webgrind/](http://dev-site.local/webgrind/)
 
 
-## Other projects of interest
+# BDD Project Specifics
 
-*  [https://github.com/msonnabaum/drupalcon-training-chef-repo](https://github.com/msonnabaum/drupalcon-training-chef-repo)
-*  [http://drupal.org/sandbox/mbutcher/1356522](http://drupal.org/sandbox/mbutcher/1356522)
-*  [http://drupal.org/project/drush-vagrant](http://drupal.org/project/drush-vagrant)
+## Important Info
+
+- Tech Lead: Nate Swart (nate.swart@acquia.com)
+- [bit.ly/nateschedule](http://bit.ly/nateschedule) - If you want to sync up with Nate (Tech Lead for this project) check out his availability and send a meeting request.
+- [Chef cookbooks planning](https://docs.google.com/a/acquia.com/spreadsheet/ccc?key=0AoTh4e7y4GWPdFlXSkw0Z0dJMnlHNmdraUxKbXhhT3c#gid=0)
+
+## Basic Methodology
+
+We're adding cookbooks to this repo as needed to help spin up various combinations of testing stacks. Each person involved can leverage cookbooks added by others and add any missing cookbooks needed for their workflow. The idea is that you can then create a Role that will piece together the cookbooks to create an environment that you can use for BDD. Ultimately, there will be a wide variety of roles to choose from depending on if you want:
+
+- completely local testing
+- integration with third party services such as SauceLabs, Github, etc
+- heavier-full featured stack using technologies such as Jenkins
+- lighter stack leveraging tools like grunt.js, casper.js, etc.
