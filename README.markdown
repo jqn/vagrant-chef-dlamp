@@ -38,7 +38,7 @@ You can then investigate at [http://dev-site.local/webgrind/](http://dev-site.lo
 
 ## Important Info
 
-- Tech Lead: Nate Swart (nate.swart@acquia.com)
+- Tech Lead: Nate Swart (nate.swart - at - acquia - dot - com)
 - [bit.ly/nateschedule](http://bit.ly/nateschedule) - If you want to sync up with Nate (Tech Lead for this project) check out his availability and send a meeting request.
 - [Chef cookbooks planning](https://docs.google.com/a/acquia.com/spreadsheet/ccc?key=0AoTh4e7y4GWPdFlXSkw0Z0dJMnlHNmdraUxKbXhhT3c#gid=0)
 
