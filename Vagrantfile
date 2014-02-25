@@ -35,14 +35,14 @@ Vagrant.configure("1") do |config|
 
   config.vm.provision :chef_solo do |chef|
     # This path will be expanded relative to the project directory
-    chef.cookbooks_path = ["cookbooks/site-cookbooks", "cookbooks/drupal-cookbooks"]
+    chef.cookbooks_path = ["cookbooks/site-cookbooks", "cookbooks/drupal-cookbooks", "cookbooks/bdd-cookbooks"]
 
     chef.add_recipe("vim")
     
     chef.roles_path = "roles"
    
     # This role represents our default Drupal development stack.
-    chef.add_role("drupal_lamp_dev")
+    chef.add_role("drupal_lamp_dev_bdd")
 
     chef.json.merge!({
         :www_root => '/var/www/vhosts/dev-site.local',
