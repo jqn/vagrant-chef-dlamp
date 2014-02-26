@@ -1,11 +1,10 @@
 
 drush_execute "pm-download" do
   cwd "/vagrant"
-  options %W{drupal --drupal-project-rename="docroot" }
+  options %W{ drupal --drupal-project-rename="docroot" }
 end
 
-execute "clean-yum-cache" do
+drush_execute "site-install" do
   cwd "/vagrant/docroot"
-  command "chmod -R #node[:apache][:user]:#node[:apache][:group] *"
-  action :nothing
+  options %W{ --account-name=admin --account-pass=admin --db-su=root --db-su-pw=root --db-url=mysql://drupaldemo:drupaldemo@localhost/drupaldemo }
 end
