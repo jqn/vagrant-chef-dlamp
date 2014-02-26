@@ -8,6 +8,6 @@ run_list(
   "role[mysql_server]",
   "recipe[drupal::multisite]",
   "role[node_grunt_cli]",
-  "recipe[drupal_demo]"
+  "role[drupal_demo]",
+  "role[drupal_tests]"
 )
-# TODO Add recipe to create dev sites via Drush make.
