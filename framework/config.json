@@ -1,0 +1,6 @@
+{
+  "docroot": "/var/www/vhosts/dev-site.local",
+  "siteUrls": {
+    "default": "http://dev-site.local"
+  }
+}
