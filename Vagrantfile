@@ -34,14 +34,17 @@ Vagrant.configure("1") do |config|
   config.vm.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
 
   config.vm.provision :chef_solo do |chef|
+    # Use NFS for all shares
+    chef.nfs = true
+
     # This path will be expanded relative to the project directory
     chef.cookbooks_path = ["cookbooks/site-cookbooks", "cookbooks/drupal-cookbooks", "cookbooks/bdd-cookbooks"]
 
     chef.add_recipe("vim")
-    
+
     chef.roles_path = "roles"
-   
-    # This role represents our default Drupal development stack.
+
+    # This role represents our default Drupal BDD development stack.
     chef.add_role("drupal_lamp_dev_bdd")
 
     chef.json.merge!({
