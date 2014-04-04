@@ -1,0 +1,10 @@
+{
+  "name": "drupal-testing-framework",
+  "description": "Testing framework for a Drupal site.",
+  "version": "0.1.0",
+  "devDependencies": {
+    "grunt": "~0.4.2",
+    "grunt-contrib-watch": "~0.5.3",
+    "grunt-parallel-behat": "git+https://github.com/arithmetric/grunt-parallel-behat.git"
+  }
+}

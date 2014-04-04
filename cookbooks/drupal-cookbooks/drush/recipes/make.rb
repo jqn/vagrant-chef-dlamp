@@ -1,6 +1,7 @@
-# Author:: Chris Christensen <chris@allplayers.com>
-# Cookbook Name::  drush_make
-# Recipe:: default
+# 
+# Author:: David King <dking@xforty.com>
+# Cookbook Name:: drush
+# Recipe:: make
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -15,15 +16,12 @@
 # limitations under the License.
 #
 
-case node[:platform]
-when "debian", "ubuntu"
-  bash "install-drush_make" do
-    code <<-EOH
-(cd /tmp; wget http://ftp.drupal.org/files/projects/drush_make-6.x-2.2.tar.gz)
-(cd /tmp; tar zxvf drush_make-6.x-2.2.tar.gz)
-(mkdir -p ~/.drush)
-(cd /tmp; mv drush_make ~/.drush/)
-    EOH
-    not_if { File.exists?(File.expand_path("~/.drush/drush_make/drush_make.drush.inc")) }
-  end
+# Make sure drush is installed first
+include_recipe "drush"
+
+# Install drush_make
+# TODO: come up with a way to allow users to update drush_make
+execute "install_drush_make" do
+  command "drush dl drush_make-6.x-#{node['drush']['make']['version']} --destination=#{node['drush']['install_dir']}/commands"
+  not_if "drush make --help"
 end

@@ -18,10 +18,6 @@ pkgs.each do |pkg|
   end
 end
 
-php_pear "pdo" do
-  action :install
-end
-
 # Install APC for increased performance. rfc1867 support also provides minimal
 # feedback for file uploads.  Requires pcre library.
 php_pear "apc" do

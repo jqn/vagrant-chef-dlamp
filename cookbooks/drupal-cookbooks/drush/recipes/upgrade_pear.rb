@@ -1,6 +1,8 @@
+# 
 # Author:: Mark Sonnabaum <mark.sonnabaum@acquia.com>
-# Cookbook Name::  drush
-# Recipe:: default
+# Contributor:: Patrick Connolly <patrick@myplanetdigital.com>
+# Cookbook Name:: drush
+# Recipe:: upgrade_pear
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -15,26 +17,12 @@
 # limitations under the License.
 #
 
-case node[:platform]
-when "debian", "ubuntu"
-  git "/usr/share/drush" do
-    repository "http://git.drupal.org/project/drush.git"
-    reference "8.x-6.x"
-    action :sync
-  end
-  
-  bash "make-drush-symlink" do
-    code <<-EOH
-    (ln -s /usr/share/drush/drush /usr/bin/drush)
-    EOH
-    not_if { File.exists?("/usr/bin/drush") }
-    only_if { File.exists?("/usr/share/drush/drush") }
-  end
+# Drush PEAR channel requires >= 1.9.1 due to hosting
+# on GitHub, where PEAR repo uses CNAME record.
 
-  bash "install-console-table" do
-    code <<-EOH
-    (pear install Console_Table)
-    EOH
-    not_if "pear list| grep Console_Table"
-  end
+# Chef resources need unique names in case in run_list twice.
+php_pear "PEAR-drush" do
+  package_name "PEAR"
+  version "1.9.1"
+  action :upgrade
 end

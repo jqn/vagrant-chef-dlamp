@@ -1,5 +1,7 @@
+# 
 # Author:: Mark Sonnabaum <mark.sonnabaum@acquia.com>
-# Cookbook Name::  drush
+# Author:: Patrick Connolly <patrick@myplanetdigital.com>
+# Cookbook Name:: drush
 # Recipe:: default
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,16 +17,8 @@
 # limitations under the License.
 #
 
-case node[:platform]
-when "debian", "ubuntu"
-  bash "install-drush" do
-    code <<-EOH
-(cd /tmp; wget http://ftp.drupal.org/files/projects/drush-7.x-5.8.tar.gz)
-(cd /tmp; tar zxvf drush-7.x-5.8.tar.gz)
-(cd /tmp; mv drush /usr/share/)
-(ln -s /usr/share/drush/drush /usr/bin/drush)
-(pear install Console_Table)
-    EOH
-    not_if { File.exists?("/usr/share/drush/drush") }
-  end
-end
+include_recipe "php"
+# Upgrade PEAR if current version is < 1.9.1
+include_recipe "drush::upgrade_pear" if node['drush']['install_method'] == "pear"
+include_recipe "drush::install_console_table"
+include_recipe "drush::#{node['drush']['install_method']}"
